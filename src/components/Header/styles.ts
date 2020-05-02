@@ -5,7 +5,10 @@ interface ContainerProps {
 }
 
 export const Container = styled.div<ContainerProps>`
-  background: #5636d3;
+  background: ${props =>
+    props.theme.title === 'light'
+      ? props.theme.colors.primary
+      : props.theme.colors.black};
   padding: 30px 0;
 
   header {
@@ -17,14 +20,18 @@ export const Container = styled.div<ContainerProps>`
     justify-content: space-between;
 
     nav {
+      display: flex;
+      align-items: center;
+
       a {
-        color: #fff;
+        color: ${props => props.theme.colors.white};
         text-decoration: none;
         font-size: 16px;
         transition: opacity 0.2s;
+        margin-right: 8px;
 
         & + a {
-          margin-left: 32px;
+          margin-left: 24px;
         }
 
         &:hover {
